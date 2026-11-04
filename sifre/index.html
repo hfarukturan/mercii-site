@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Şifre yenile · Mercii</title>
+  <link rel="icon" href="../assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink: #2A1640; --muted: #6B5B86; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px 16px; background: #F6F0FB; color: var(--ink); font-family: 'Plus Jakarta Sans', system-ui, sans-serif; text-align: center; }
+    main { width: 100%; max-width: 400px; }
+    img { width: 90px; }
+    h1 { font-size: 26px; margin: 8px 0 6px; }
+    p { color: var(--muted); margin: 0 0 18px; line-height: 1.5; }
+    input { width: 100%; padding: 15px; border-radius: 14px; border: 1px solid rgba(42,22,64,0.12); background: #fff; font: inherit; font-size: 16px; margin-bottom: 10px; }
+    button, .btn { display: block; width: 100%; padding: 15px; border: 0; border-radius: 14px; background: linear-gradient(100deg, #6D4AFF, #B145F5); color: #fff; font: inherit; font-weight: 800; font-size: 16px; cursor: pointer; text-decoration: none; }
+    button:disabled { opacity: 0.6; }
+    #msg { min-height: 22px; font-size: 14px; color: #C2410C; margin-top: 12px; }
+    [hidden] { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="../assets/logo.png" alt="" />
+    <div id="form-box" hidden>
+      <h1>Yeni şifreni belirle</h1>
+      <p>En az 8 karakter olsun.</p>
+      <form id="form">
+        <input id="p1" type="password" placeholder="Yeni şifre" autocomplete="new-password" />
+        <input id="p2" type="password" placeholder="Yeni şifre (tekrar)" autocomplete="new-password" />
+        <button id="save" type="submit">Şifreyi kaydet</button>
+      </form>
+    </div>
+    <div id="done" hidden>
+      <h1>Şifren değişti ✓</h1>
+      <p>Artık yeni şifrenle uygulamadan ya da web'den giriş yapabilirsin.</p>
+      <a class="btn" href="../app/">Giriş yap</a>
+    </div>
+    <div id="bad" hidden>
+      <h1>Bağlantı geçersiz</h1>
+      <p>Bu bağlantının süresi dolmuş ya da daha önce kullanılmış. Giriş ekranından "Şifremi unuttum" ile yenisini iste.</p>
+      <a class="btn" href="../app/">Giriş ekranına git</a>
+    </div>
+    <div id="msg"></div>
+  </main>
+  <script src="../assets/supabase.js"></script>
+  <script>
+    var client = supabase.createClient('https://uuaodxbjbxyqwrkuticz.supabase.co', 'sb_publishable_3zP04SoIPFJuk7knwW6y5g_NVMxTv1q', {
+      auth: { flowType: 'implicit', detectSessionInUrl: true, persistSession: false },
+    });
+    var show = function (id) { document.getElementById(id).hidden = false; };
+    var hide = function (id) { document.getElementById(id).hidden = true; };
+    var msg = document.getElementById('msg');
+
+    client.auth.getSession().then(function (res) {
+      show(res.data.session ? 'form-box' : 'bad');
+    });
+
+    document.getElementById('form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var p1 = document.getElementById('p1').value;
+      var p2 = document.getElementById('p2').value;
+      msg.textContent = '';
+      if (p1.length < 8) { msg.textContent = 'Şifre en az 8 karakter olmalı.'; return; }
+      if (p1 !== p2) { msg.textContent = 'Şifreler aynı değil.'; return; }
+      var save = document.getElementById('save');
+      save.disabled = true;
+      var res = await client.auth.updateUser({ password: p1 });
+      save.disabled = false;
+      if (res.error) { msg.textContent = 'Şifre değiştirilemedi. Farklı bir şifre dene.'; return; }
+      hide('form-box');
+      show('done');
+      client.auth.signOut();
+    });
+  </script>
+</body>
+</html>
