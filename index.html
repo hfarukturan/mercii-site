@@ -51,6 +51,8 @@
     nav { display: flex; gap: 22px; font-weight: 600; font-size: 15px; }
     nav a { text-decoration: none; color: var(--muted); }
     nav a:hover { color: var(--ink); }
+    nav .nav-login { background: var(--ink); color: #fff; padding: 7px 15px; border-radius: 12px; margin-top: -7px; }
+    nav .nav-login:hover { color: #fff; }
 
     /* Giriş */
     .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; padding: 56px 0 72px; }
@@ -90,6 +92,10 @@
     .tabbar span { display: block; font-size: 14px; line-height: 1.3; }
     .tabbar .on { color: var(--tint); }
 
+    .promo { background: linear-gradient(120deg, #FBDCC8, #E6DCFA); border-radius: 28px; padding: 32px 28px; text-align: center; }
+    .promo h2 { margin-bottom: 6px; }
+    .promo p { margin: 0; color: var(--muted); font-size: 17px; }
+
     /* Bölümler */
     section { padding: 64px 0; }
     h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.8px; margin: 0 0 10px; line-height: 1.1; }
@@ -116,7 +122,7 @@
     @media (max-width: 860px) {
       .hero { grid-template-columns: 1fr; padding-top: 32px; }
       .steps, .features { grid-template-columns: 1fr; }
-      header nav { display: none; }
+      header nav a:not(.nav-login) { display: none; }
     }
   </style>
 </head>
@@ -128,6 +134,7 @@
         <a href="#nasil">Nasıl çalışır?</a>
         <a href="#ozellikler">Özellikler</a>
         <a href="#indir">İndir</a>
+        <a class="nav-login" href="app/">Giriş yap</a>
       </nav>
     </div>
   </header>
@@ -143,9 +150,9 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.33-3.55zM14.18 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg>
             iPhone için indir
           </a>
-          <a class="btn btn-ghost" href="app/">💻 Tarayıcıda aç</a>
+          <a class="btn btn-ghost" href="app/">Giriş yap</a>
         </div>
-        <p class="note">iPhone'da beta (TestFlight) olarak indirebilir ya da hiçbir şey indirmeden tarayıcıdan kullanabilirsin.</p>
+        <p class="note">İster mobil uygulamamızdan ister tarayıcından, Mercii'nin kararlarını anlık takip et.</p>
       </div>
 
       <div class="phone" aria-label="Mercii oy ekranından bir görünüm">
@@ -178,6 +185,11 @@
           <div><span>👤</span>Profil</div>
         </div>
       </div>
+    </div>
+
+    <div class="promo">
+      <h2>Karar anı cebinde, masanda, her yerde.</h2>
+      <p>Telefonundan oy ver, bilgisayarından takip et. Hiçbir davayı kaçırma, kararları anlık gör.</p>
     </div>
 
     <section id="nasil">
@@ -219,10 +231,10 @@
       <div class="cta">
         <img src="assets/logo.png" alt="" />
         <h2>Haklı mısın, haksız mı?</h2>
-        <p>Mercii'yi indir, ilk davanı aç ya da başkalarının davalarında karar mercii ol.</p>
+        <p>Mercii'yi indir ya da giriş yap; ilk davanı aç, başkalarının davalarında karar mercii ol.</p>
         <div class="ctas" style="justify-content:center">
           <a class="btn btn-dark" href="https://testflight.apple.com/join/djtpc3PC">iPhone için indir</a>
-          <a class="btn btn-ghost" href="app/">💻 Tarayıcıda aç</a>
+          <a class="btn btn-ghost" href="app/">Giriş yap</a>
         </div>
       </div>
     </section>
