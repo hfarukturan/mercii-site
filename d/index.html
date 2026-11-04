@@ -40,13 +40,17 @@
     <h1>Sizce kim haklı?</h1>
     <p>Bu dava Mercii'de oylanıyor. Uygulamayı aç, iki tarafı da oku ve kararını ver.</p>
     <a class="btn primary" id="open" href="mercii://">Uygulamada aç</a>
+    <a class="btn secondary" id="web" href="../app/">Tarayıcıda devam et</a>
     <a class="btn secondary" href="https://testflight.apple.com/join/djtpc3PC">Uygulamayı indir (iPhone)</a>
     <small>Android sürümü çok yakında · <a href="../">mercii.app</a></small>
   </main>
   <script>
     // mercii.app/d/?id=<dava> → uygulamada o davayı aç.
     var id = new URLSearchParams(location.search).get('id');
-    if (id && /^[0-9a-f-]{36}$/i.test(id)) document.getElementById('open').href = 'mercii://dava/' + id;
+    if (id && /^[0-9a-f-]{36}$/i.test(id)) {
+      document.getElementById('open').href = 'mercii://dava/' + id;
+      document.getElementById('web').href = '../app/dava/' + id;
+    }
   </script>
 </body>
 </html>
