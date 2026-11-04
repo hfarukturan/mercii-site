@@ -65,24 +65,30 @@
     .btn-ghost { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
     .note { font-size: 13px; color: var(--muted); margin-top: 12px; }
 
-    /* Örnek kart */
-    .phone { justify-self: center; width: min(360px, 100%); background: #EFE7FB; border-radius: 40px; padding: 18px; box-shadow: 0 30px 60px rgba(42, 22, 64, 0.18); border: 8px solid #fff; }
-    .vote-card { background: #F9DDEB; border-radius: 26px; padding: 20px; }
-    .who { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); font-weight: 600; }
-    .who b { color: var(--ink); }
-    .avatar { width: 28px; height: 28px; border-radius: 50%; background: #FCE7C8; display: grid; place-items: center; font-size: 15px; }
-    .chip { display: inline-block; background: rgba(255,255,255,0.8); color: #BE185D; font-weight: 700; font-size: 12px; padding: 4px 10px; border-radius: 999px; margin: 12px 0 8px; }
-    .vote-card h3 { margin: 0 0 12px; font-size: 21px; line-height: 1.2; letter-spacing: -0.3px; }
-    .side { background: rgba(255,255,255,0.75); border-radius: 16px; padding: 10px 12px; margin-top: 8px; border-left: 4px solid; font-size: 13.5px; }
-    .side strong { display: block; font-size: 13px; }
+    /* Uygulama görseli: oy ekranının sadeleştirilmiş kopyası */
+    .phone { justify-self: center; width: min(350px, 100%); background: #F1EAFD; border-radius: 42px; border: 9px solid #fff; padding: 22px 16px 12px; box-shadow: 0 30px 60px rgba(42, 22, 64, 0.18); display: flex; flex-direction: column; gap: 10px; }
+    .app-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .app-head b { font-size: 20px; line-height: 1.1; letter-spacing: -0.4px; }
+    .count { background: #E7DEFB; border-radius: 12px; padding: 4px 9px; text-align: center; font-size: 10.5px; color: var(--muted); font-weight: 700; white-space: nowrap; }
+    .count strong { display: block; color: var(--tint); font-size: 15px; line-height: 1.1; }
+    .toast { background: var(--ink); color: #fff; border-radius: 12px; padding: 8px 11px; font-size: 11.5px; font-weight: 700; line-height: 1.35; }
+    .daily { align-self: center; background: var(--yellow); border-radius: 999px; padding: 4px 12px; font-size: 11.5px; font-weight: 700; margin-bottom: -2px; }
+    .vote-card { background: #F9DDEB; border-radius: 22px; padding: 14px; }
+    .who { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; }
+    .avatar { width: 24px; height: 24px; border-radius: 50%; background: #FCE7C8; display: grid; place-items: center; font-size: 12px; }
+    .chip { display: inline-block; background: rgba(255,255,255,0.8); color: #BE185D; font-weight: 700; font-size: 11px; padding: 3px 9px; border-radius: 999px; margin: 8px 0 6px; }
+    .vote-card h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.2; letter-spacing: -0.3px; }
+    .sides { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .side { background: rgba(255,255,255,0.75); border-radius: 13px; padding: 8px 9px; border-left: 3px solid; font-size: 11.5px; line-height: 1.35; }
+    .side strong { display: block; font-size: 11.5px; margin-bottom: 2px; }
     .side.a { border-color: #2563EB; } .side.a strong { color: #2563EB; }
     .side.b { border-color: #EA580C; } .side.b strong { color: #EA580C; }
-    .choices { display: grid; grid-template-columns: 1fr 0.75fr 1fr; gap: 8px; margin-top: 14px; }
-    .choices div { border-radius: 14px; padding: 12px 6px; text-align: center; color: #fff; font-weight: 700; font-size: 12.5px; text-shadow: 0 1px 2px rgba(30,20,70,0.3); }
-    .result { margin-top: 14px; background: #fff; border-radius: 18px; padding: 14px; }
-    .result p { margin: 0 0 8px; font-size: 13px; font-weight: 700; }
-    .barline { height: 10px; border-radius: 999px; background: #EEE7F8; overflow: hidden; display: flex; }
-    .barline span { display: block; height: 100%; }
+    .choices { display: grid; grid-template-columns: 1fr 0.75fr 1fr; gap: 7px; }
+    .choices div { border-radius: 13px; padding: 10px 5px; text-align: center; color: #fff; font-weight: 700; font-size: 11.5px; line-height: 1.2; text-shadow: 0 1px 2px rgba(30,20,70,0.3); display: grid; place-items: center; }
+    .hint { text-align: center; font-size: 10.5px; color: var(--muted); }
+    .tabbar { display: grid; grid-template-columns: repeat(5, 1fr); background: #fff; border-radius: 999px; padding: 6px 4px; font-size: 9.5px; text-align: center; font-weight: 600; color: var(--muted); }
+    .tabbar span { display: block; font-size: 14px; line-height: 1.3; }
+    .tabbar .on { color: var(--tint); }
 
     /* Bölümler */
     section { padding: 64px 0; }
@@ -142,22 +148,34 @@
         <p class="note">iPhone'da beta (TestFlight) olarak indirebilir ya da hiçbir şey indirmeden tarayıcıdan kullanabilirsin.</p>
       </div>
 
-      <div class="phone" aria-label="Uygulamadan örnek bir dava kartı">
+      <div class="phone" aria-label="Mercii oy ekranından bir görünüm">
+        <div class="app-head">
+          <b>Karar mercii sensin</b>
+          <div class="count"><strong>12</strong>🔥 3 gün</div>
+        </div>
+        <div class="toast">✓ Seninle aynı fikirde olanlar: %62 · Nihai sonuç için beklemede kal.</div>
+        <span class="daily">🌟 Günün davası</span>
         <div class="vote-card">
-          <div class="who"><span class="avatar">⭐</span><b>Mercii Seçkisi</b></div>
+          <div class="who"><span class="avatar">⭐</span>Mercii Seçkisi</div>
           <span class="chip">❤️ İlişki</span>
           <h3>Bulaşıkları kim yıkamalı?</h3>
-          <div class="side a"><strong>Yemeği yapan</strong>Ben pişirdim, bulaşık da onun işi olmalı.</div>
-          <div class="side b"><strong>Masayı kuran</strong>Ben de sofrayı hazırladım, sırayla yıkayalım.</div>
-          <div class="choices">
-            <div style="background: var(--blue)">Yemeği yapan haklı</div>
-            <div style="background: var(--yellow)">İkisi de</div>
-            <div style="background: var(--orange)">Masayı kuran haklı</div>
+          <div class="sides">
+            <div class="side a"><strong>Yemeği yapan</strong>Ben pişirdim, bulaşık da onun işi olmalı.</div>
+            <div class="side b"><strong>Masayı kuran</strong>Ben de sofrayı hazırladım, sırayla yıkayalım.</div>
           </div>
         </div>
-        <div class="result">
-          <p>🏆 Mercii'nin kararı: Yemeği yapan haklı bulundu (%58 oyla).</p>
-          <div class="barline"><span style="width:58%;background:#2563EB"></span><span style="width:15%;background:#E3B94F"></span><span style="width:27%;background:#EA580C"></span></div>
+        <div class="choices">
+          <div style="background: var(--blue)">Yemeği yapan haklı</div>
+          <div style="background: var(--yellow)">İkisi de</div>
+          <div style="background: var(--orange)">Masayı kuran haklı</div>
+        </div>
+        <div class="hint">← sola · sağa kaydır → · ↑ yukarı kaydırıp geç</div>
+        <div class="tabbar">
+          <div class="on"><span>✋</span>Oy Ver</div>
+          <div><span>🧭</span>Keşfet</div>
+          <div><span>➕</span>Paylaş</div>
+          <div><span>📊</span>Sonuçlar</div>
+          <div><span>👤</span>Profil</div>
         </div>
       </div>
     </div>
@@ -174,7 +192,7 @@
         <div class="step">
           <div class="num" style="background: var(--lav-soft); color:#5B45C9">2</div>
           <h3>Topluluk oylasın</h3>
-          <p>Kartlar diğer kullanıcılara düşer. Sola, sağa kaydırarak ya da butonlarla kimin haklı olduğuna karar verirler.</p>
+          <p>Kartlar diğer kullanıcılara düşer. Sola ya da sağa kaydırarak veya butonlarla oy verirler; verdiğin anda kaç kişinin seninle aynı fikirde olduğunu görürsün.</p>
         </div>
         <div class="step">
           <div class="num" style="background: #FBF0D3; color:#8A6410">3</div>
@@ -193,7 +211,7 @@
         <div class="feat" style="background:#DCE3FB"><div class="ico">📊</div><h3>İstatistik al</h3><p>Seni haklı ve haksız bulanların çoğunluğu kimlerden oluşuyor: kadınlar mı, gençler mi?</p></div>
         <div class="feat" style="background:#FBEBC8"><div class="ico">🎭</div><h3>Anonim ya da açık</h3><p>İstersen kimliğini gizle, istersen kullanıcı adınla paylaş. Oyların kimseyle eşleştirilmez.</p></div>
         <div class="feat" style="background:#E4DBFD"><div class="ico">🛡️</div><h3>Güvenli topluluk</h3><p>Her paylaşım yayından önce incelenir; küfür, hakaret ve kişisel bilgi içeren içerikler yayınlanmaz.</p></div>
-        <div class="feat" style="background:#FDE6D8"><div class="ico">🌸</div><h3>Takip et, hediye gönder</h3><p>Arkadaşlarını bul, takip et; profillere çiçek, kalp, alkış ya da terlik gönder.</p></div>
+        <div class="feat" style="background:#FDE6D8"><div class="ico">🔥</div><h3>Seri, rozet, günün davası</h3><p>Her gün oy ver, serini büyüt, rozetleri topla. Her sabah yeni bir günün davası seni bekliyor.</p></div>
       </div>
     </section>
 
